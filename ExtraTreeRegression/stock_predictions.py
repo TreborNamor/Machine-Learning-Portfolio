@@ -5,7 +5,6 @@ from sklearn.ensemble import ExtraTreesRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
-from joblib import dump
 
 # Preprocessing DataFrame
 df = pd.read_csv('datasets/BATS_SPY, 1D.csv')
@@ -18,11 +17,12 @@ X = np.array(df[['open']])
 y = df['close']
 
 # Train_Test_Split Dataset
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42, shuffle=False)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.04, random_state=42, shuffle=False)
+
 
 # Fit ExtraTreeRegression Model
 model = ExtraTreesRegressor(n_estimators=100, bootstrap=False, n_jobs=-1, warm_start=True)
-model.fit(X, y)
+model.fit(X_train, y_train)
 
 # Create List, Model Predictions & Store RSME Into List
 test_rsme_error = list()
@@ -37,6 +37,8 @@ actual_close_time = df.index[-len(y_test):]
 predicted_close_time = df.index[-len(y_test):]
 plt.plot(historical_close_time, y_train,  color='blue',)
 plt.plot(actual_close_time, y_test,  color='gray')
+plt.plot(predicted_close_time, test_predicitions,  color='purple')
+plt.scatter(actual_close_time, y_test,  color='gray')
 plt.scatter(predicted_close_time, test_predicitions,  color='purple')
 plt.xlabel('Date')
 plt.ylabel('Price')
