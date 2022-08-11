@@ -11,7 +11,7 @@ from joblib import dump, load
 
 # Get data from URL link
 DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml2/master/"
-HOUSING_PATH = os.path.join("../RandomForestRegressor/datasets", "housing")
+HOUSING_PATH = os.path.join("/datasets", "housing")
 HOUSING_URL = DOWNLOAD_ROOT + "datasets/housing/housing.tgz"
 
 
@@ -32,6 +32,7 @@ def load_housing_data(housing_path=HOUSING_PATH):
 
 
 # Load DataFrame
+fetch_housing_data()
 df = load_housing_data()
 df.reset_index()
 
@@ -53,7 +54,7 @@ y = df['median_house_value'].copy()
 # Train_Test_Split Dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
-# Fit RandomForestRegressor Model to train dataset
+# Fit RandomForestRegression Model to train dataset
 model = RandomForestRegressor(n_jobs=-1, n_estimators=100, criterion='squared_error')  # Best Estimator
 model.fit(X_train, y_train)
 
