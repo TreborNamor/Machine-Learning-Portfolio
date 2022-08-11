@@ -30,7 +30,7 @@ print('test_rsme_error: ', test_rsme_error[0])
 
 # Test Residual To See If LinearRegression Is A Good Fit
 test_residuals = (y_test - test_predicitions)
-sns.scatterplot(x=y_test, y= test_residuals)
+sns.scatterplot(x=y_test, y=test_residuals)
 plt.axhline(y=0, color='red', ls='--')
 sns.displot(test_residuals, bins=25, kde=True)
 
@@ -65,4 +65,4 @@ load_model = load('final_model.joblib')
 # Use Final Model To Predict Future Sales compared to
 campaign = [[50, 37, 18]]  # Campaign equals Advertisement Spent
 final_prediction = load_model.predict(campaign)
-print(final_prediction[0])  # Print Predicted Sales
+print('Final_Prediciton', final_prediction[0])  # Print Predicted Sales
