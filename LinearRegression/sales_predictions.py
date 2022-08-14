@@ -65,4 +65,4 @@ load_model = load('final_model.joblib')
 # Use Final Model To Predict Future Sales compared to
 campaign = [[50, 37, 18]]  # Campaign equals Advertisement Spent
 final_prediction = load_model.predict(campaign)
-print('Final_Prediciton', final_prediction[0])  # Print Predicted Sales
+print('Final_Prediction', final_prediction[0])  # Print Predicted Sales
