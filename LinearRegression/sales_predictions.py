@@ -23,13 +23,13 @@ model.fit(X_train, y_train)
 
 # Create List, Model Predictions & Store RSME Into List
 test_rsme_error = list()
-test_predicitions = model.predict(X_test)
-rsme = sqrt(mean_squared_error(y_test, test_predicitions))
+test_predictions = model.predict(X_test)
+rsme = sqrt(mean_squared_error(y_test, test_predictions))
 test_rsme_error.append(rsme)
 print('test_rsme_error: ', test_rsme_error[0])
 
 # Test Residual To See If LinearRegression Is A Good Fit
-test_residuals = (y_test - test_predicitions)
+test_residuals = (y_test - test_predictions)
 sns.scatterplot(x=y_test, y=test_residuals)
 plt.axhline(y=0, color='red', ls='--')
 sns.displot(test_residuals, bins=25, kde=True)

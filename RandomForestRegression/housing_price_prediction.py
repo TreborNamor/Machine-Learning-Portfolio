@@ -60,8 +60,8 @@ model.fit(X_train, y_train)
 
 # Create List, Model Test Predictions & Store RSME Into List
 test_rsme_error = list()
-test_predicitions = model.predict(X_test)
-rsme = sqrt(mean_squared_error(y_test, test_predicitions))
+test_predictions = model.predict(X_test)
+rsme = sqrt(mean_squared_error(y_test, test_predictions))
 test_rsme_error.append(rsme)
 print('test_rsme_error: ', test_rsme_error[0])
 
