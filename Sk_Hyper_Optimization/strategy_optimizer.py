@@ -1,3 +1,11 @@
+"""This script uses the Scikit-Optimize library (skopt) to optimize the buy and sell thresholds of a trading strategy
+based on the Relative Strength Index (RSI) and Moving Average Convergence Divergence (MACD) indicators. The script
+reads in a CSV file containing financial data, applies the trading strategy to generate buy and sell signals,
+and backtests the results to calculate the profit percentage. The script defines functions to populate the
+'enter_trade' and 'exit_trade' columns of the dataset, filter out data before the first buy signal and after the last
+sell signal, calculate the total profit percentage, and perform backtesting on the given dataset. Finally,
+the script uses the gp_minimize function from skopt to search for the best parameters for the trading strategy using
+a Bayesian optimization algorithm. The best parameters are used to generate the best profit and print the result. """
 import pandas as pd
 from skopt.space import Integer
 from skopt import gp_minimize
